@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Registration</title>
+    <link rel="stylesheet" href="{% static 'css/styles_registration.css' %}">
+</head>
+
+<body class="form">
+    <div class="form__block">
+        <h2 class="form__block__title">Регистрация</h2>
+        <p class="form__block__p">Создайте учётную запись</p>
+
+        <form method="POST" >
+        {% csrf_token %}
+
+        <h4 class="form__block__title__input form__block__title__input__top">Введите Логин</h4>
+        {{ form.name }}
+        <img src="{% static 'images/user.svg' %}" alt="" class="form__block__input__ico__user">
+
+        <h4 class="form__block__title__input">Введите Email</h4>
+        {{ form.email }}
+        <img src="{% static 'images/letter.svg' %}" alt="" class="form__block__input__ico__letter">
+
+        <h4 class="form__block__title__input">Введите пароль</h4>
+        {{ form.password }}
+        <img src="{% static '/images/lock.svg' %}" alt="" class="form__block__input__ico__lock">
+
+        <input class="form__block__button" type="submit" value="Регистрация">
+        </form>
+
+        <a href="{% url 'join' %}" class="form__block__return__join">Вернуться к странице входа</a>
+    </div>
+</body>
+</html>
